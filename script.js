@@ -1,7 +1,7 @@
 const container = document.getElementById("game-container");
 const instruction = document.getElementById("instruction");
 const closeBtn = document.getElementById("close-btn");
-
+const bubbleSound = new Audio("sound/bubble-pop.mp3");
 const animals = [
   "img/angry.png",
   "img/axolotl (1).png",
@@ -33,6 +33,8 @@ function spawnAnimal(x, y) {
 
   container.appendChild(animal);
   setTimeout(() => animal.remove(), 2000);
+  bubbleSound.currentTime = 0;
+  bubbleSound.play();
 }
 
 // Hide instruction when tap outside

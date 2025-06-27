@@ -2,15 +2,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  user-select: none; /* Ngăn chọn văn bản */
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 body,
 html {
   height: 100%;
-  background: #fffafc;
+  background: #ffeaf5;
   font-family: "Baloo 2", cursive;
-  overflow-x: hidden;
-  position: relative;
+  overflow: hidden;
+  touch-action: manipulation; /* cải thiện thao tác cảm ứng */
 }
 
 #game-container {
@@ -20,6 +23,7 @@ html {
   overflow: hidden;
 }
 
+/* --- Animal xuất hiện --- */
 .animal {
   position: absolute;
   width: 80px;
@@ -27,7 +31,7 @@ html {
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
-  animation: popUp 0.4s ease-out, fadeOut 1.8s ease-in forwards;
+  animation: popUp 0.4s ease-out, fadeOut 1.6s ease-in forwards;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -50,38 +54,44 @@ html {
   }
 }
 
-/* Instruction box */
+/* --- Hộp hướng dẫn --- */
 #instruction {
   position: absolute;
-  top: 20px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
-  background: #ffe4ec;
-  padding: 20px 40px;
-  border-radius: 16px;
-  box-shadow: 0 0 10px #ffb6c1;
-  z-index: 100;
+  width: max-content;
   max-width: 90%;
+  background: #fff0f6;
+  padding: 12px 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(255, 182, 193, 0.3);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 16px; /* khoảng cách giữa chữ và nút */
+  white-space: nowrap; /* không xuống dòng */
 }
 
 #instruction h1 {
-  color: #ff4081;
   font-size: 20px;
-  text-align: center;
+  color: #ff4081;
+  line-height: 1.4;
 }
 
 #close-btn {
   position: absolute;
-  top: 5px;
+  top: 6px;
   right: 10px;
   background: none;
   border: none;
   font-size: 18px;
   color: #ff4081;
   cursor: pointer;
+  user-select: none;
 }
 
-/* Responsive tweak */
+/* --- Responsive cho màn nhỏ --- */
 @media (max-width: 768px) {
   .animal {
     width: 60px;
